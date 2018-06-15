@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Mvc.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Authors")" class="btn btn-default"><i class="fade fa-plus"></i>Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit", "Authors", new { id = item.Id})" class="btn btn-default"><i class="fa fa-plus "></i>Edit</a>
+                <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="fa fa-plus "></i>Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations', 'Are You Sure to Delete this Record?', function () {
+                window.location.href = '@Url.Action("Delete", "Authors")/' + id;
+            }, null);
+        }
+    </script>
+}
