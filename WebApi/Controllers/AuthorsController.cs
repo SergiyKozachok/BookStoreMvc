@@ -1,32 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebApi.Models;
+using Database.Models;
+using Logic.Services;
+using TransferLayer.Models;
 
 namespace WebApi.Controllers
 {
     public class AuthorsController : ApiController
     {
-        private Models.DbModel db = new Models.DbModel();
+        private readonly AuthorsService _authorsService = new AuthorsService();
 
         // GET: api/Authors
-        public IQueryable<Author> GetAuthors()
+        public List<AuthorDto> GetAuthors()
         {
-            return db.Authors;
+            return _authorsService.GetAll();
         }
 
-        // GET: api/Authors/5
-        [ResponseType(typeof(Author))]
+        //// GET: api/Authors/5
+        //[ResponseType(typeof(Author))]
         public IHttpActionResult GetAuthor(int id)
         {
-            Author author = db.Authors.Find(id);
+            AuthorDto author = _authorsService.GetById(id);
             if (author == null)
             {
                 return NotFound();
@@ -35,84 +31,55 @@ namespace WebApi.Controllers
             return Ok(author);
         }
 
-        // PUT: api/Authors/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutAuthor(int id, Author author)
+        //// PUT: api/Authors/5
+        //[ResponseType(typeof(void))]
+        public IHttpActionResult PutAuthor(int id, AuthorDto author)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != author.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(author).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AuthorExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            _authorsService.Update(id, author);
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Authors
-        [ResponseType(typeof(Author))]
-        public IHttpActionResult PostAuthor(Author author)
+        //// POST: api/Authors
+        //[ResponseType(typeof(Author))]
+        public IHttpActionResult PostAuthor(AuthorDto author)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Authors.Add(author);
-            db.SaveChanges();
+            _authorsService.Add(author);
 
             return CreatedAtRoute("DefaultApi", new { id = author.Id }, author);
         }
 
-        // DELETE: api/Authors/5
-        [ResponseType(typeof(Author))]
+        //// DELETE: api/Authors/5
+        //[ResponseType(typeof(Author))]
         public IHttpActionResult DeleteAuthor(int id)
         {
-            Author author = db.Authors.Find(id);
-            if (author == null)
-            {
-                return NotFound();
-            }
+            _authorsService.Remove(id);
 
-            db.Authors.Remove(author);
-            db.SaveChanges();
 
-            return Ok(author);
+            return Ok(1);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool AuthorExists(int id)
-        {
-            return db.Authors.Count(e => e.Id == id) > 0;
-        }
+        //private bool AuthorExists(int id)
+        //{
+        //    return db.Authors.Count(e => e.Id == id) > 0;
+        //}
     }
 }

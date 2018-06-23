@@ -5,12 +5,15 @@ using System.Web;
 
 namespace Mvc.Models
 {
-    public class Author
+    public class BookModel
     {
         public int Id { get; set; }
 
-        public String firstName { get; set; }
+        public String Title { get; set; }
 
-        public String lastName { get; set; }
+        public double Price { get; set; }
+
+        public int Count { get; set; }
+
     }
 }

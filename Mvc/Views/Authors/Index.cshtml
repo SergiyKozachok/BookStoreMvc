@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mvc.Models.Author>
+﻿@model IEnumerable<TransferLayer.Models.AuthorDto>
 
 @{
     ViewBag.Title = "Index";
@@ -9,13 +9,13 @@
 <p>
     <a href="@Url.Action("AddOrEdit", "Authors")" class="btn btn-default"><i class="fade fa-plus"></i>Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.firstName)
+            <p>Ім’я</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lastName)
+            <p>Прізвище</p>
         </th>
         <th></th>
     </tr>
@@ -24,10 +24,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.firstName)
+                @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.lastName)
+                @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 <a href="@Url.Action("AddOrEdit", "Authors", new { id = item.Id})" class="btn btn-default"><i class="fa fa-plus "></i>Edit</a>

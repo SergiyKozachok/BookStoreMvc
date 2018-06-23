@@ -1,10 +1,13 @@
 ﻿using Mvc.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using TransferLayer.Models;
 
 namespace Mvc.Controllers
 {
@@ -13,10 +16,9 @@ namespace Mvc.Controllers
         // GET: Author
         public ActionResult Index()
         {
-            IEnumerable<Author> ahtList;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Authors").Result;
-            ahtList = response.Content.ReadAsAsync<IEnumerable<Author>>().Result;
-            return View(ahtList);
+            var athList = response.Content.ReadAsAsync<IEnumerable<AuthorDto>>().Result;
+            return View(athList);
         }
 
         [HttpGet]
@@ -24,17 +26,17 @@ namespace Mvc.Controllers
         {
             if (id == 0)
             {
-                return View(new Author());
+                return View(new AuthorDto());
             }
             else
             {
                 HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Authors/" + id.ToString()).Result;
-                return View(response.Content.ReadAsAsync<Author>().Result);
+                return View(response.Content.ReadAsAsync<AuthorDto>().Result);
             }
         }
 
         [HttpPost]
-        public ActionResult AddOrEdit(Author ath)
+        public ActionResult AddOrEdit(AuthorDto ath)
         {
             if (ath.Id == 0)
             {

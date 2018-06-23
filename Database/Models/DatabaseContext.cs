@@ -1,10 +1,10 @@
-namespace WebApi.Models
+namespace Database.Models
 {
     using System;
     using System.Data.Entity;
     using System.Linq;
 
-    public class DbModel : DbContext
+    public class DatabaseContext : DbContext
     {
         // Your context has been configured to use a 'DbModel' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -12,7 +12,7 @@ namespace WebApi.Models
         // 
         // If you wish to target a different database and/or database provider, modify the 'DbModel' 
         // connection string in the application configuration file.
-        public DbModel()
+        public DatabaseContext()
             : base("name=DbModel")
         {
         }
@@ -21,6 +21,8 @@ namespace WebApi.Models
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<Author> Authors { get; set; }
+
+        public virtual DbSet<Book> Books { get; set; }
     }
 
     //public class MyEntity

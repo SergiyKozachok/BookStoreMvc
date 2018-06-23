@@ -1,4 +1,4 @@
-﻿@model Mvc.Models.Author
+﻿@model TransferLayer.Models.AuthorDto
 @{
                 /**/
 
@@ -13,15 +13,15 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.firstName)
-            @Html.EditorFor(model => model.firstName)
-            @Html.ValidationMessageFor(model => model.firstName)
+            @Html.LabelFor(model => model.FirstName)
+            @Html.EditorFor(model => model.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FirstName)
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.lastName)
-            @Html.EditorFor(model => model.lastName)
-            @Html.ValidationMessageFor(model => model.lastName)
+            @Html.LabelFor(model => model.LastName)
+            @Html.EditorFor(model => model.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.LastName)
         </div>
 
         <div class="form-group">

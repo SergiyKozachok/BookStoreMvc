@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TransferLayer.Models.BookDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Books")" class="btn btn-default"><i class="fade fa-plus"></i>Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            <p>Автор</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td>
+            <a href="@Url.Action("AddOrEdit", "Books", new { id = item.Id})" class="btn btn-default"><i class="fa fa-plus "></i>Edit</a>
+            <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="fa fa-plus "></i>Delete</a>
+        </td>
+    </tr>
+    }
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations', 'Are You Sure to Delete this Record?', function () {
+                window.location.href = '@Url.Action("Delete", "Books")/' + id;
+            }, null);
+        }
+    </script>
+}
