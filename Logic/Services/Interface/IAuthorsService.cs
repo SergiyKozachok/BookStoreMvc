@@ -7,7 +7,7 @@ using TransferLayer.Models;
 
 namespace Logic.Services.Interface
 {
-    interface IAuthorsService
+    public interface IAuthorsService
     {
         List<AuthorDto> GetAll();
         AuthorDto GetById(int id);

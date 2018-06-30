@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,15 @@ namespace Logic.Services
 {
     public class BooksService : IBooksService
     {
+        public List<BookDto> GetAll()
+        {
+            using (var uow = new UnitOfWork())
+            {
+
+                return uow.BookRepository.GetAll().Select(x => new BookDto(x)).ToList();
+            }
+        }
+
         public void Add(BookDto book)
         {
             using (var uow = new UnitOfWork())
@@ -22,7 +33,9 @@ namespace Logic.Services
                     Title = book.Title,
                     Price = book.Price,
                     Count = book.Count,
+                    Image = book.Image,
                     AuthorId = book.AuthorId
+
                 };
 
                 uow.BookRepository.Insert(bookDb);
@@ -30,26 +43,23 @@ namespace Logic.Services
             }
         }
 
-        public List<BookDto> GetAll()
-        {
-            using (var uow = new UnitOfWork())
-            {
-                return uow.BookRepository.GetAll().Select(x => new BookDto(x)).ToList();
-            }
-        }
+
 
         public BookDto GetById(int id)
         {
             using (var uow = new UnitOfWork())
             {
+
                 var getBook = uow.BookRepository.GetById(id);
                 BookDto book = new BookDto()
                 {
                     Id = getBook.Id,
                     Title = getBook.Title,
                     Count = getBook.Count,
-                    Price = getBook.Price
-
+                    Price = getBook.Price,
+                    Image = getBook.Image,
+                    AuthorId = getBook.AuthorId
+                    //Author = getBook.Author
                 };
                 return book;
             }
@@ -75,7 +85,9 @@ namespace Logic.Services
                     Title = book.Title,
                     Count = book.Count,
                     Price = book.Price,
+                    Image = book.Image,
                     AuthorId = book.AuthorId
+
                 };
                 uow.BookRepository.Update(bookDb);
                 uow.SaveChanges();

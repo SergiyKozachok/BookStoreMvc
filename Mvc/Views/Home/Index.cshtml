@@ -2,10 +2,16 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="span8">
+    <div class="flexslider">
+        <ul class="slides">
+            <li><img src="~/Images/507071472-612x612.jpg" /></li>
+            <li><img src="~/Images/636337794.jpg" /></li>
+            <li><img src="~/Images/lspor.jpg" /></li>
+            <li><img src="~/Images/pexels-photo-694740.jpeg" /></li>
+            <li><img src="~/Images/pexels-photo.jpg" /></li>
+        </ul>
+    </div>
 </div>
 
 <div class="row">
@@ -29,3 +35,40 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+@section scripts
+{
+    <script src="~/Content/Piccolo/js/jquery.flexslider.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btn-blog-next").click(function () {
+            $('#blogCarousel').carousel('next');
+        });
+        $("#btn-blog-prev").click(function () {
+            $('#blogCarousel').carousel('prev');
+        });
+
+        $("#btn-client-next").click(function () {
+            $('#clientCarousel').carousel('next');
+        });
+        $("#btn-client-prev").click(function () {
+            $('#clientCarousel').carousel('prev');
+        });
+
+    });
+
+    $(window).load(function () {
+
+        $('.flexslider').flexslider({
+            animation: "slide",
+            slideshow: true,
+            start: function (slider) {
+                $('body').removeClass('loading');
+            }
+        });
+    });
+
+</script>
+}

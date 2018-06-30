@@ -7,12 +7,28 @@
 <h2>Index</h2>
 
 <p>
-    <a href="@Url.Action("AddOrEdit", "Books")" class="btn btn-default"><i class="fade fa-plus"></i>Create New</a>
+    <a href="@Url.Action("AddOrEdit", "Books")" class="btn btn"><i class="icon-plus"></i>Create New</a>
 </p>
+<div class="row clearfix no-margin">
+    @foreach (var item in Model)
+    {
+        <ul class="gallery-post-grid holder">
+            <!-- Gallery Item 1 -->
+            <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                <a href="#"><img src="@($"data:image/jpg;base64,{item.Image}")" /></a>
+                <span class="project-details"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a>For an international ad campaign.</span>
+            </li>
+        </ul>
+    }
+
+</div>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            <p>Обкладинка</p>
         </th>
         <th>
             <p>Автор</p>
@@ -28,24 +44,36 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            <a href="@Url.Action("AddOrEdit", "Books", new { id = item.Id})" class="btn btn-default"><i class="fa fa-plus "></i>Edit</a>
-            <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="fa fa-plus "></i>Delete</a>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @if (item.Image != null)
+                {
+                    //string base64String = Convert.ToBase64String(item.Image);
+
+                    <img src="@($"data:image/jpg;base64,{item.Image}")" />
+                    @*<img src="@String.Format(item.Image)" alt="">*@
+                }
+
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+                @Html.DisplayFor(modelItem => item.AuthorLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            <td>
+                <a href="@Url.Action("AddOrEdit", "Books", new { id = item.Id})" class="btn btn-default"><i class="icon-edit"></i>Edit</a>
+                <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="icon-remove"></i>Delete</a>
+            </td>
+        </tr>
     }
 
 </table>

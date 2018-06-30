@@ -12,6 +12,9 @@ namespace Database.Models
         public double Price { get; set; }
 
         public int Count { get; set; }
+
+        public String Image { get; set; }
+
         [ForeignKey("Author")]
         public int AuthorId { get; set; }
 

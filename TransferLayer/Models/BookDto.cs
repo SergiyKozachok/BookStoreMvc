@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace TransferLayer.Models
 {
@@ -19,7 +21,13 @@ namespace TransferLayer.Models
 
         public int AuthorId { get; set; }
 
-        public Author Author { get; set; }
+        public string AuthorName { get; set; }
+
+        public string AuthorLastName { get; set; }
+
+        public String Image { get; set; }
+
+        public virtual Author Author { get; set; }
 
 
         public BookDto() {  }
@@ -30,10 +38,16 @@ namespace TransferLayer.Models
             Title = book.Title;
             Price = book.Price;
             Count = book.Count;
+            Image = book.Image;
             AuthorId = book.AuthorId;
+            AuthorName = book.Author.firstName;
+            AuthorLastName = book.Author.lastName;
+            //Author = book.Author;
         }
 
 
         public List<SelectListItemViewModel> Authors { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

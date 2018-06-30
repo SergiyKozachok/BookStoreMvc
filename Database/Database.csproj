@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201806230912092_Add column Image to table Books.cs" />
+    <Compile Include="Migrations\201806230912092_Add column Image to table Books.Designer.cs">
+      <DependentUpon>201806230912092_Add column Image to table Books.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Migrations\201806181246430_Create-Database.cs" />
     <Compile Include="Migrations\201806181246430_Create-Database.Designer.cs">
@@ -67,6 +71,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806181246430_Create-Database.resx">
       <DependentUpon>201806181246430_Create-Database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806230912092_Add column Image to table Books.resx">
+      <DependentUpon>201806230912092_Add column Image to table Books.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

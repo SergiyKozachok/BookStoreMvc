@@ -1,11 +1,15 @@
 ﻿using Mvc.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using TransferLayer.Models;
+using static Mvc.GlobalVariables;
 
 namespace Mvc.Controllers
 {
@@ -13,9 +17,15 @@ namespace Mvc.Controllers
     {
         public ActionResult Index()
         {
-            IEnumerable<BookDto> booksList;
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Books").Result;
-            booksList = response.Content.ReadAsAsync<IEnumerable<BookDto>>().Result;
+            HttpResponseMessage response = WebApiClient.GetAsync("Books").Result;
+            var booksList = response.Content.ReadAsAsync<IEnumerable<BookDto>>().Result;
+            //foreach (var item in booksList)
+            //{
+            //    if (item.Image != null)
+            //    {
+            //        Base64ToImage(item.Image);
+            //    }
+            //}
             return View(booksList);
         }
 
@@ -23,10 +33,10 @@ namespace Mvc.Controllers
         public ActionResult AddOrEdit(int id = 0)
         {
             var model = new BookDto();
-            IEnumerable<AuthorDto> ahtList;
-            HttpResponseMessage responseAth = GlobalVariables.WebApiClient.GetAsync("Authors").Result;
-            ahtList = responseAth.Content.ReadAsAsync<IEnumerable<AuthorDto>>().Result;
-            model.Authors = ahtList.Select(a => new SelectListItemViewModel
+            var responseAth = WebApiClient.GetAsync("Authors").Result;
+            var ahtList = responseAth.Content.ReadAsAsync<IEnumerable<AuthorDto>>().Result;
+            var authorDtos = ahtList as AuthorDto[] ?? ahtList.ToArray();
+            model.Authors = authorDtos.Select(a => new SelectListItemViewModel
             {
                 Id = a.Id,
                 Text = a.FirstName + " " + a.LastName
@@ -35,26 +45,34 @@ namespace Mvc.Controllers
             {
                 return View(model);
             }
-            else
+
+            var response = WebApiClient.GetAsync("Books/" + id).Result;
+            model = response.Content.ReadAsAsync<BookDto>().Result;
+            model.Authors = authorDtos.Select(a =>
             {
-                
-                HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Books/" + id.ToString()).Result;
-                model = response.Content.ReadAsAsync<BookDto>().Result;
-                model.Authors = ahtList.Select(a => new SelectListItemViewModel
+                var viewModel = new SelectListItemViewModel
                 {
                     Id = a.Id,
                     Text = a.FirstName + " " + a.LastName
-                }).ToList();
-                return View(model);
-            }
+                };
+                return viewModel;
+            }).ToList();
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult AddOrEdit(BookDto book)
         {
-            IEnumerable<AuthorDto> ahtList;
-            HttpResponseMessage responseAth = GlobalVariables.WebApiClient.GetAsync("Authors").Result;
-            ahtList = responseAth.Content.ReadAsAsync<IEnumerable<AuthorDto>>().Result;
+            var file = Request.Files["image1"];
+
+            if (file != null)
+            {
+                var sourceimage = System.Drawing.Image.FromStream(file.InputStream);
+                book.Image = ImageToBase64(sourceimage, ImageFormat.Jpeg);
+            }
+
+            HttpResponseMessage responseAth = WebApiClient.GetAsync("Authors").Result;
+            var ahtList = responseAth.Content.ReadAsAsync<IEnumerable<AuthorDto>>().Result;
             book.Authors = ahtList.Select(a => new SelectListItemViewModel
             {
                 Id = a.Id,
@@ -62,12 +80,12 @@ namespace Mvc.Controllers
             }).ToList();
             if (book.Id == 0)
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PostAsJsonAsync("Books", book).Result;
+                HttpResponseMessage response = WebApiClient.PostAsJsonAsync("Books", book).Result;
                 TempData["SuccessMessage"] = "Saved Successfully";
             }
             else
             {
-                HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Books/" + book.Id, book).Result;
+                HttpResponseMessage response = WebApiClient.PutAsJsonAsync("Books/" + book.Id, book).Result;
                 TempData["SuccessMessage"] = "Updated Successfully";
             }
             return RedirectToAction("Index");
@@ -75,9 +93,37 @@ namespace Mvc.Controllers
 
         public ActionResult Delete(int id)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("Books/" + id.ToString()).Result;
+            HttpResponseMessage response = WebApiClient.DeleteAsync("Books/" + id.ToString()).Result;
             TempData["SuccessMessage"] = "Deleted Successfully";
             return RedirectToAction("Index");
+        }
+
+        public string ImageToBase64(Image image,
+            System.Drawing.Imaging.ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Convert Image to byte[]
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
+
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
+
+        public Image Base64ToImage(string base64String)
+        {
+            // Convert Base64 String to byte[]
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            MemoryStream ms = new MemoryStream(imageBytes, 0,
+                imageBytes.Length);
+
+            // Convert byte[] to Image
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            Image image = Image.FromStream(ms, true);
+            return image;
         }
     }
 }
