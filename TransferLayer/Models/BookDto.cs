@@ -33,6 +33,7 @@ namespace TransferLayer.Models
         public HttpPostedFileBase ImageUpload { get; set; }
 
 
+
         public BookDto() {  }
 
         public BookDto(Book book)
