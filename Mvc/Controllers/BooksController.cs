@@ -19,13 +19,13 @@ namespace Mvc.Controllers
         {
             HttpResponseMessage response = WebApiClient.GetAsync("Books").Result;
             var booksList = response.Content.ReadAsAsync<IEnumerable<BookDto>>().Result;
-            //foreach (var item in booksList)
-            //{
-            //    if (item.Image != null)
-            //    {
-            //        Base64ToImage(item.Image);
-            //    }
-            //}
+            return View(booksList);
+        }
+
+        public ActionResult AdmIndex()
+        {
+            HttpResponseMessage response = WebApiClient.GetAsync("Books").Result;
+            var booksList = response.Content.ReadAsAsync<IEnumerable<BookDto>>().Result;
             return View(booksList);
         }
 

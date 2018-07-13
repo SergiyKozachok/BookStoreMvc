@@ -6,6 +6,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace TransferLayer.Models
 {
@@ -29,6 +30,8 @@ namespace TransferLayer.Models
 
         public virtual Author Author { get; set; }
 
+        public HttpPostedFileBase ImageUpload { get; set; }
+
 
         public BookDto() {  }
 
@@ -42,7 +45,6 @@ namespace TransferLayer.Models
             AuthorId = book.AuthorId;
             AuthorName = book.Author.firstName;
             AuthorLastName = book.Author.lastName;
-            //Author = book.Author;
         }
 
 

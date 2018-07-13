@@ -3,12 +3,6 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    <a href="@Url.Action("AddOrEdit", "Books")" class="btn btn"><i class="icon-plus"></i>Create New</a>
-</p>
 <div class="row clearfix no-margin">
     @foreach (var item in Model)
     {
@@ -22,74 +16,7 @@
     }
 
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            <p>Обкладинка</p>
-        </th>
-        <th>
-            <p>Автор</p>
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @if (item.Image != null)
-                {
-                    //string base64String = Convert.ToBase64String(item.Image);
-
-                    <img src="@($"data:image/jpg;base64,{item.Image}")" />
-                    @*<img src="@String.Format(item.Image)" alt="">*@
-                }
-
-                @*@Html.DisplayFor(modelItem => item.Image)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorName)
-                @Html.DisplayFor(modelItem => item.AuthorLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Count)
-            </td>
-            <td>
-                <a href="@Url.Action("AddOrEdit", "Books", new { id = item.Id})" class="btn btn-default"><i class="icon-edit"></i>Edit</a>
-                <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="icon-remove"></i>Delete</a>
-            </td>
-        </tr>
-    }
-
-</table>
 
 @section scripts{
-    <script>
-        $(function () {
-            var successMessage = '@TempData["SuccessMessage"]'
-            if (successMessage != '')
-                alertify.success(successMessage);
-        });
-
-        function Delete(id) {
-            alertify.confirm('Web Api CRUD Operations', 'Are You Sure to Delete this Record?', function () {
-                window.location.href = '@Url.Action("Delete", "Books")/' + id;
-            }, null);
-        }
-    </script>
+    
 }

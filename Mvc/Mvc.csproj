@@ -284,6 +284,7 @@
     <Content Include="Views\Authors\AddOrEdit.cshtml" />
     <Content Include="Views\Books\Index.cshtml" />
     <Content Include="Views\Books\AddOrEdit.cshtml" />
+    <Content Include="Views\Books\AdmIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
