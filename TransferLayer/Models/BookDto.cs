@@ -30,7 +30,7 @@ namespace TransferLayer.Models
 
         public virtual Author Author { get; set; }
 
-        public HttpPostedFileBase ImageUpload { get; set; }
+        public HttpPostedFileBase ImageUpload  { get; set; }
 
 
 
