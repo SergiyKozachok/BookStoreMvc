@@ -32,6 +32,7 @@ namespace TransferLayer.Models
 
         public HttpPostedFileBase ImageUpload  { get; set; }
 
+        public HttpPostedFileBase ImageFile { get; set; }
 
 
         public BookDto() {  }
@@ -46,11 +47,11 @@ namespace TransferLayer.Models
             AuthorId = book.AuthorId;
             AuthorName = book.Author.firstName;
             AuthorLastName = book.Author.lastName;
+            //Image = "~/AppFiles/Images/noimage.png";
         }
 
 
         public List<SelectListItemViewModel> Authors { get; set; }
 
-        public HttpPostedFileBase ImageFile { get; set; }
     }
 }
