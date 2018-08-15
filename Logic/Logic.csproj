@@ -46,6 +46,8 @@
     <Compile Include="Services\BooksService.cs" />
     <Compile Include="Services\Interface\IAuthorsService.cs" />
     <Compile Include="Services\Interface\IBooksService.cs" />
+    <Compile Include="Services\Interface\IPageService.cs" />
+    <Compile Include="Services\PageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.csproj">

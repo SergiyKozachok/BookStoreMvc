@@ -14,10 +14,14 @@ namespace Database.UnitOfWork
         private readonly DatabaseContext _context = new DatabaseContext();
         private GenericRepository<Author> _authorRepository;
         private GenericRepository<Book> _bookRepository;
+        private GenericRepository<Page> _pageRepository;
 
 
         public GenericRepository<Author> AuthorRepository => _authorRepository ?? (_authorRepository = new GenericRepository<Author>(_context));
         public GenericRepository<Book> BookRepository => _bookRepository ?? (_bookRepository = new GenericRepository<Book>(_context));
+
+        public GenericRepository<Page> PageRepository =>
+            _pageRepository ?? (_pageRepository = new GenericRepository<Page>(_context));
 
         public void Dispose()
         {
