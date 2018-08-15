@@ -111,5 +111,21 @@ namespace Mvc.Areas.Admin.Controllers
                 count++;
             }
         }
+
+        [HttpGet]
+        public ActionResult EditSidebar(int id = 0)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Sidebars/" + id.ToString()).Result;
+            //return View(response.Content.ReadAsAsync<PageDto>().Result);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditSidebar(SidebarDto sidebar)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.PutAsJsonAsync("Sidebars/" + sidebar.Id, sidebar).Result;
+            TempData["SuccessMessage"] = "Updated Successfully";
+            return RedirectToAction("EditSidebar");
+        }
     }
 }

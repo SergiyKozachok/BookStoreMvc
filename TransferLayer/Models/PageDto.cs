@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Database.Models;
+using System.Web.Mvc;
 
 namespace TransferLayer.Models
 {
@@ -25,6 +26,7 @@ namespace TransferLayer.Models
 
         [Required]
         [StringLength(int.MaxValue, MinimumLength = 3)]
+        [AllowHtml]
         public String Body { get; set; }
 
         public int Sorting { get; set; }

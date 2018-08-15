@@ -33,29 +33,29 @@ else
 
         @foreach (var item in Model)
         {
-        <tr id="id_@item.Id" class="@item.Slug">
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Slug)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HasSidebar)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditPage", new { id = item.Id }) |
-                @Html.ActionLink("Details", "PageDetails", new { id = item.Id }) |
-                <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="icon-remove"></i>Delete</a>
-            </td>
-        </tr>
+            <tr id="id_@item.Id" class="@item.Slug">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Slug)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasSidebar)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditPage", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "PageDetails", new { id = item.Id }) |
+                    <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="icon-remove"></i>Delete</a>
+                </td>
+            </tr>
         }
 
     </table>
 }
 
 @section scripts{
-    <script src = "https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script>
         $(function () {
             var successMessage = '@TempData["SuccessMessage"]'

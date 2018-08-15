@@ -13,7 +13,7 @@ namespace WebApi.Controllers
     {
         private readonly PageService _pageService = new PageService();
 
-        // GET: api/Authors
+        // GET: api/Pages
         public List<PageDto> GetPages()
         {
             return _pageService.GetAll();

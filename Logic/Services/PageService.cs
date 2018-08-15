@@ -28,7 +28,6 @@ namespace Logic.Services
 
                 uow.PageRepository.Insert(pageDb);
                 uow.SaveChanges();
-                //return ;
             }
         }
 

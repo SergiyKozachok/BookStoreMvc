@@ -25,6 +25,8 @@ namespace Database.Models
         public virtual DbSet<Book> Books { get; set; }
 
         public virtual DbSet<Page> Pages { get; set; }
+
+        public virtual DbSet<Sidebar> Sidebars { get; set; }
     }
 
     //public class MyEntity
