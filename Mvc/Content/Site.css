@@ -27,3 +27,19 @@ table.sorting tr:not(.home) {
 .ui-state-highlight {
     border: 1px dashed #ccc;
 }
+
+.body-content .shopping-cart th {
+    background-color: #1d5dd2
+}
+
+.delete-shopping {
+
+}
+
+.continue-shopping {
+
+}
+
+.update-shopping {
+
+}

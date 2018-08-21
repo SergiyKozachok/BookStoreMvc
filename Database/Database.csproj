@@ -80,6 +80,15 @@
     <Compile Include="Migrations\201808150807041_Add table Sidebar.Designer.cs">
       <DependentUpon>201808150807041_Add table Sidebar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808151208375_Add table Category.cs" />
+    <Compile Include="Migrations\201808151208375_Add table Category.Designer.cs">
+      <DependentUpon>201808151208375_Add table Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808211132518_Add tables Order and OrderBooks.cs" />
+    <Compile Include="Migrations\201808211132518_Add tables Order and OrderBooks.Designer.cs">
+      <DependentUpon>201808211132518_Add tables Order and OrderBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Migrations\201806181246430_Create-Database.cs" />
     <Compile Include="Migrations\201806181246430_Create-Database.Designer.cs">
@@ -88,6 +97,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderBooks.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Sidebar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808150807041_Add table Sidebar.resx">
       <DependentUpon>201808150807041_Add table Sidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808151208375_Add table Category.resx">
+      <DependentUpon>201808151208375_Add table Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808211132518_Add tables Order and OrderBooks.resx">
+      <DependentUpon>201808211132518_Add tables Order and OrderBooks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

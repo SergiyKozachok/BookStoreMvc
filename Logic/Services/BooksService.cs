@@ -18,7 +18,6 @@ namespace Logic.Services
         {
             using (var uow = new UnitOfWork())
             {
-
                 return uow.BookRepository.GetAll().Select(x => new BookDto(x)).ToList();
             }
         }

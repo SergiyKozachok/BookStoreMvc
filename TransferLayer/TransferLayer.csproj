@@ -65,6 +65,10 @@
   <ItemGroup>
     <Compile Include="Models\AuthorDto.cs" />
     <Compile Include="Models\BookDto.cs" />
+    <Compile Include="Models\CartDto.cs" />
+    <Compile Include="Models\CategoryDto.cs" />
+    <Compile Include="Models\OrderBooksDto.cs" />
+    <Compile Include="Models\OrderDto.cs" />
     <Compile Include="Models\PageDto.cs" />
     <Compile Include="Models\SidebarDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

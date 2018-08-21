@@ -9,7 +9,7 @@ using TransferLayer.Models;
 
 namespace WebApi.Controllers
 {
-    public class SidebarController : ApiController
+    public class SidebarsController : ApiController
     {
         private readonly SidebarService _sidebarService = new SidebarService();
 

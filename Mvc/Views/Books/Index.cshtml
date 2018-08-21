@@ -10,7 +10,12 @@
             <!-- Gallery Item 1 -->
             <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
                 <a href="#"><img src="@($"data:image/jpg;base64,{item.Image}")" /></a>
-                <span class="project-details"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a>For an international ad campaign.</span>
+                <span class="project-details"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a></span>
+                <span class="project-details"><a href="#">@Html.DisplayFor(modelItem => item.Price) грн</a></span>
+                <span>@*<button id="btnAddToCart" >Add to cart</button>*@</span>
+                @Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart", new {id = item.Id}, null)
+            </li>
+            <li>
             </li>
         </ul>
     }
@@ -18,5 +23,5 @@
 </div>
 
 @section scripts{
-    
+
 }

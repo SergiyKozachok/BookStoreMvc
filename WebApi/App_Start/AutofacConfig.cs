@@ -18,6 +18,9 @@ namespace WebApi
             builder.RegisterType<BooksService>().As<IBooksService>().InstancePerRequest();
             builder.RegisterType<PageService>().As<IPageService>().InstancePerRequest();
             builder.RegisterType<SidebarService>().As<ISidebarService>().InstancePerRequest();
+            builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerRequest();
+            builder.RegisterType<OrderService>().As<IOrderService>().InstancePerRequest();
+            builder.RegisterType<OrderBooksService>().As<IOrderBooksService>().InstancePerRequest();
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;

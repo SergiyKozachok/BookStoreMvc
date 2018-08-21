@@ -27,6 +27,10 @@ namespace Database.Models
         public virtual DbSet<Page> Pages { get; set; }
 
         public virtual DbSet<Sidebar> Sidebars { get; set; }
+
+        public virtual DbSet<Category> Categories { get; set; }
+
+        public virtual DbSet<Order> Orders { get; set; }
     }
 
     //public class MyEntity

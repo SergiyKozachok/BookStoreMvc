@@ -12,6 +12,11 @@ namespace Database.UnitOfWork
     {
         GenericRepository<Author> AuthorRepository { get; }
         GenericRepository<Book> BookRepository { get; }
+        GenericRepository<Page> PageRepository { get; }
+        GenericRepository<Sidebar> SidebarRepository { get; }
+        GenericRepository<Category> CategoryRepository { get; }
+        GenericRepository<Order> OrderRepository { get; }
+        GenericRepository<OrderBooks> OrderBooksRepository { get; }
 
         void SaveChanges();
     }
