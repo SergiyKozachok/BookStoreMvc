@@ -9,11 +9,11 @@
         <ul class="gallery-post-grid holder">
             <!-- Gallery Item 1 -->
             <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
-                <a href="#"><img src="@($"data:image/jpg;base64,{item.Image}")" /></a>
+                <a href="#"><img class="book-title-center" src="@($"data:image/jpg;base64,{item.Image}")" /></a>
                 <span class="project-details"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a></span>
                 <span class="project-details"><a href="#">@Html.DisplayFor(modelItem => item.Price) грн</a></span>
-                <span>@*<button id="btnAddToCart" >Add to cart</button>*@</span>
-                @Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart", new {id = item.Id}, null)
+                <span class="project-details">@Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart", new { id = item.Id }, null)</span>
+                
             </li>
             <li>
             </li>
@@ -24,5 +24,5 @@
 
 
 @section scripts{
-
+    <link href="~/Content/book-index.css" rel="stylesheet" />
 }

@@ -1,0 +1,14 @@
+﻿body {
+}
+
+img.book-title-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    background-color: #f8f8f8;
+}
+
+.project-details {
+    text-align: center;
+}
