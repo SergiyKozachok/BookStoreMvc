@@ -20,7 +20,7 @@ namespace WebApi
             builder.RegisterType<SidebarService>().As<ISidebarService>().InstancePerRequest();
             builder.RegisterType<CategoryService>().As<ICategoryService>().InstancePerRequest();
             builder.RegisterType<OrderService>().As<IOrderService>().InstancePerRequest();
-            builder.RegisterType<OrderBooksService>().As<IOrderBooksService>().InstancePerRequest();
+            builder.RegisterType<OrderDetailsService>().As<IOrderDetailsService>().InstancePerRequest();
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.DependencyResolver = resolver;

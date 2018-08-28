@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TransferLayer.Models.OrderDto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Order Listing</h2>
+
+
+<table class="table">
+    <tr>
+        <th>OrderDate</th>
+        <th>PaymentType</th>
+        <th>Status</th>
+        <th>CustomerName</th>
+        <th>CustomerSurname</th>
+        <th>CustomerPhone</th>
+        <th>CustomerEmail</th>
+        <th>CustomerAddress</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @String.Format("{0: dd/MM/yyyy}", @item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

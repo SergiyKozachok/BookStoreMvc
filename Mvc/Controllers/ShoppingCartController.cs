@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TransferLayer.Models;
@@ -113,20 +115,30 @@ namespace Mvc.Controllers
                 PaymentType = "Cash",
                 Status = "Processing"
             };
-            HttpResponseMessage responseOrder = GlobalVariables.WebApiClient.PostAsJsonAsync("Orders", order).Result;
+            HttpResponseMessage responseOrder = WebApiClient.PostAsJsonAsync("Orders", order).Result;
             TempData["SuccessMessage"] = "Saved Successfully";
+            //Thread.Sleep(3000);
+
+            HttpResponseMessage response = WebApiClient.GetAsync("Orders").Result;
+            var ordersList = response.Content.ReadAsAsync<IEnumerable<BookDto>>().Result;
+            int orederId = 0;
+            foreach (var item in ordersList)
+            {
+                orederId = item.Id;
+            }
+            
 
             foreach (CartDto cart in listCart)
             {
-                OrderBooksDto orderBooks = new OrderBooksDto()
+                OrderDetailsDto orderDetails = new OrderDetailsDto()
                 {
-                    Order_Id = 1,
-                    Book_Id = cart.Book.Id,
-                    Price = (int)cart.Book.Price,
+                    OrderId = orederId,
+                    BookId = cart.Book.Id,
+                    Price = cart.Book.Price,
                     Quantity = cart.Quantity
                 };
 
-                HttpResponseMessage responseOrderBooks = GlobalVariables.WebApiClient.PostAsJsonAsync("OrderBooks", orderBooks).Result;
+                HttpResponseMessage responseOrderBooks = GlobalVariables.WebApiClient.PostAsJsonAsync("OrderDetails", orderDetails).Result;
                 TempData["SuccessMessage"] = "Saved Successfully";
             }
 

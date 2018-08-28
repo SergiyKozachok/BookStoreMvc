@@ -35,5 +35,7 @@ namespace Database.Models
         public string CustomerAddress { get; set; }
         
         public virtual ICollection<Book> Books { get; set; }
+
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

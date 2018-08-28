@@ -43,9 +43,45 @@ namespace TransferLayer.Models
             CustomerAddress = order.CustomerAddress;
         }
 
+        public Order GetEntity()
+        {
+            return new Order()
+            {
+                Id = Id,
+                OrderName = OrderName,
+                OrderDate = OrderDate,
+                PaymentType = PaymentType,
+                Status = Status,
+                CustomerName = CustomerName,
+                CustomerSurname = CustomerSurname,
+                CustomerPhone = CustomerPhone,
+                CustomerEmail = CustomerEmail,
+                CustomerAddress = CustomerAddress
+            };
+        }
+
         public OrderDto()
         {
 
         }
     }
+
+    //public class SelectOrderList
+    //{
+    //    public int Id { get; set; }
+
+    //    public int Id { get; set; }
+
+    //    public double Price { get; set; }
+
+    //    public int Quantity { get; set; }
+
+    //    public int Id { get; set; }
+
+    //    OrderId = orderDetails.Order.Id;
+    //    BookId = orderDetails.Book.Id;
+    //    Price = orderDetails.Price;
+    //    Quantity = orderDetails.Quantity;
+    //    BookTitle = orderDetails.Book.Title;
+    //}
 }

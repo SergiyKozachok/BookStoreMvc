@@ -48,11 +48,11 @@
     <Compile Include="Services\Interface\IAuthorsService.cs" />
     <Compile Include="Services\Interface\IBooksService.cs" />
     <Compile Include="Services\Interface\ICategoryService.cs" />
-    <Compile Include="Services\Interface\IOrderBooksService.cs" />
+    <Compile Include="Services\Interface\IOrderDetailsService.cs" />
     <Compile Include="Services\Interface\IOrderService.cs" />
     <Compile Include="Services\Interface\IPageService.cs" />
     <Compile Include="Services\Interface\ISidebarService.cs" />
-    <Compile Include="Services\OrderBooksService.cs" />
+    <Compile Include="Services\OrderDetailsService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\SidebarService.cs" />
@@ -66,6 +66,9 @@
       <Project>{551FCA27-F375-4667-802B-102F54D6C54F}</Project>
       <Name>TransferLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

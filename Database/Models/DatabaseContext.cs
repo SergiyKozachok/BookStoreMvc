@@ -31,6 +31,8 @@ namespace Database.Models
         public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<Order> Orders { get; set; }
+
+        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
     }
 
     //public class MyEntity

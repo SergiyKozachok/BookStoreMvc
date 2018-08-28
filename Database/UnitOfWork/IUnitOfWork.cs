@@ -16,7 +16,7 @@ namespace Database.UnitOfWork
         GenericRepository<Sidebar> SidebarRepository { get; }
         GenericRepository<Category> CategoryRepository { get; }
         GenericRepository<Order> OrderRepository { get; }
-        GenericRepository<OrderBooks> OrderBooksRepository { get; }
+        GenericRepository<OrderDetails> OrderDetailsRepository { get; }
 
         void SaveChanges();
     }

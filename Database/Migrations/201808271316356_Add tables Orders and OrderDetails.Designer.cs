@@ -7,13 +7,13 @@ namespace Database.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddtablesOrderandOrderBooks : IMigrationMetadata
+    public sealed partial class AddtablesOrdersandOrderDetails : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddtablesOrderandOrderBooks));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddtablesOrdersandOrderDetails));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808211132518_Add tables Order and OrderBooks"; }
+            get { return "201808271316356_Add tables Orders and OrderDetails"; }
         }
         
         string IMigrationMetadata.Source

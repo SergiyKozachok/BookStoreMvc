@@ -7,12 +7,12 @@ using TransferLayer.Models;
 
 namespace Logic.Services.Interface
 {
-    public interface IOrderBooksService
+    public interface IOrderDetailsService
     {
-        List<OrderBooksDto> GetAll();
-        OrderBooksDto GetById(int id);
-        void Add(OrderBooksDto orderBooks);
-        void Update(int id, OrderBooksDto orderBooks);
+        List<OrderDetailsDto> GetAll();
+        OrderDetailsDto GetById(int id);
+        void Add(OrderDetailsDto orderBooks);
+        void Update(int id, OrderDetailsDto orderBooks);
         void Remove(int id);
     }
 }

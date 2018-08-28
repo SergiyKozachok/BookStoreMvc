@@ -18,7 +18,7 @@ namespace Database.UnitOfWork
         private GenericRepository<Sidebar> _sidebarRepository;
         private GenericRepository<Category> _categoryRepository;
         private GenericRepository<Order> _orderRepository;
-        private GenericRepository<OrderBooks> _orderBooksRepository;
+        private GenericRepository<OrderDetails> _orderDetailsRepository;
 
 
         public GenericRepository<Author> AuthorRepository => 
@@ -39,8 +39,8 @@ namespace Database.UnitOfWork
         public GenericRepository<Order> OrderRepository =>
             _orderRepository ?? (_orderRepository = new GenericRepository<Order>(_context));
 
-        public GenericRepository<OrderBooks> OrderBooksRepository =>
-            _orderBooksRepository ?? (_orderBooksRepository = new GenericRepository<OrderBooks>(_context));
+        public GenericRepository<OrderDetails> OrderDetailsRepository =>
+            _orderDetailsRepository ?? (_orderDetailsRepository = new GenericRepository<OrderDetails>(_context));
 
         public void Dispose()
         {

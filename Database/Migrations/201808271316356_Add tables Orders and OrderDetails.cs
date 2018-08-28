@@ -2,8 +2,8 @@ namespace Database.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-
-    public partial class AddtablesOrderandOrderBooks : DbMigration
+    
+    public partial class AddtablesOrdersandOrderDetails : DbMigration
     {
         public override void Up()
         {
@@ -25,31 +25,26 @@ namespace Database.Migrations
                 .PrimaryKey(t => t.Id);
 
             CreateTable(
-                    "dbo.OrderBooks",
+                    "dbo.OrderDetails",
                     c => new
                     {
-                        Order_Id = c.Int(nullable: false),
-                        Book_Id = c.Int(nullable: false),
-                        Price = c.Int(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
+                        OrderId = c.Int(nullable: false),
+                        BookId = c.Int(nullable: false),
+                        Price = c.Double(nullable: false),
                         Quantity = c.Int(nullable: false)
                     })
-                .PrimaryKey(t => new { t.Order_Id, t.Book_Id })
-                .ForeignKey("dbo.Orders", t => t.Order_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Books", t => t.Book_Id, cascadeDelete: true)
-                .Index(t => t.Order_Id)
-                .Index(t => t.Book_Id);
-
-
+                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => new { t.OrderId, t.BookId })
+                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
+                .ForeignKey("dbo.Books", t => t.BookId, cascadeDelete: true)
+                .Index(t => t.OrderId)
+                .Index(t => t.BookId);
         }
-
+        
         public override void Down()
         {
-            DropForeignKey("dbo.OrderBooks", "Book_Id", "dbo.Books");
-            DropForeignKey("dbo.OrderBooks", "Order_Id", "dbo.Orders");
-            DropIndex("dbo.OrderBooks", new[] { "Book_Id" });
-            DropIndex("dbo.OrderBooks", new[] { "Order_Id" });
-            DropTable("dbo.OrderBooks");
-            DropTable("dbo.Orders");
+            
         }
     }
 }

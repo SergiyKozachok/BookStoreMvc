@@ -67,7 +67,7 @@
     <Compile Include="Models\BookDto.cs" />
     <Compile Include="Models\CartDto.cs" />
     <Compile Include="Models\CategoryDto.cs" />
-    <Compile Include="Models\OrderBooksDto.cs" />
+    <Compile Include="Models\OrderDetailsDto.cs" />
     <Compile Include="Models\OrderDto.cs" />
     <Compile Include="Models\PageDto.cs" />
     <Compile Include="Models\SidebarDto.cs" />
@@ -80,6 +80,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
