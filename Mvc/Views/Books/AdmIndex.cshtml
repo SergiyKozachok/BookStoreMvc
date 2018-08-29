@@ -13,21 +13,12 @@
 <table class="table table-striped table-condensed" id="booksTable">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                <label>Обкладинка</label>
-            </th>
-            <th>
-                <label>Автор</label>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Count)
-            </th>
+            <th scope="col"><label><b>Назва</b></label></th>
+            <th scope="col"><label><b>Обкладинка</b></label></th>
+            <th scope="col"><label><b>Автор</b></label></th>
+            <th scope="col"><label><b>Ціна</b></label></th>
+            <th scope="col"><label><b>Кількість</b></label></th>
+            <th scope="col"><label><b>Анотація</b></label></th>
             <th></th>
         </tr>
     </thead>
@@ -60,7 +51,10 @@
                     @Html.DisplayFor(modelItem => item.Count)
                 </td>
                 <td>
-                    <a href="@Url.Action("AddOrEdit", "Books", new {id = item.Id})" class="btn btn-default"><i class="icon-edit"></i>Edit</a>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a href="@Url.Action("AddOrEdit", "Books", new {id = item.Id})" class="btn btn-default"><i class="icon-edit"></i>Edit</a><br/>
                     <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="icon-remove"></i>Delete</a>
                 </td>
             </tr>
@@ -68,7 +62,8 @@
     </tbody>
 </table>
 
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/adm-books.css" rel="stylesheet" />
 @section scripts{
     <script>
         $(function () {
@@ -90,7 +85,7 @@
         function activatejQueryTable() {
             $("#booksTable").DataTable({
                 "pagingType": "full_numbers"
-        });
+            });
         }
 
         $(function () {

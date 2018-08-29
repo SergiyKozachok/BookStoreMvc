@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text;
 
 namespace Database.Models
 {
@@ -20,6 +21,8 @@ namespace Database.Models
         public int Count { get; set; }
 
         public String Image { get; set; }
+
+        public String Description { get; set; }
 
         [ForeignKey("Author")]
         public int AuthorId { get; set; }

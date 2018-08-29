@@ -87,7 +87,7 @@ namespace Mvc.Controllers
                 HttpResponseMessage response = WebApiClient.PutAsJsonAsync("Books/" + book.Id, book).Result;
                 TempData["SuccessMessage"] = "Updated Successfully";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("AddOrEdit");
         }
 
         public ActionResult Delete(int id)
@@ -123,6 +123,12 @@ namespace Mvc.Controllers
             ms.Write(imageBytes, 0, imageBytes.Length);
             Image image = Image.FromStream(ms, true);
             return image;
+        }
+
+        public ActionResult Details(int id)
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Books/" + id.ToString()).Result;
+            return View(response.Content.ReadAsAsync<BookDto>().Result);
         }
     }
 }

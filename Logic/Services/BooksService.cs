@@ -33,8 +33,8 @@ namespace Logic.Services
                     Price = book.Price,
                     Count = book.Count,
                     Image = book.Image,
-                    AuthorId = book.AuthorId
-
+                    AuthorId = book.AuthorId,
+                    Description = book.Description
                 };
 
                 uow.BookRepository.Insert(bookDb);
@@ -57,8 +57,8 @@ namespace Logic.Services
                     Count = getBook.Count,
                     Price = getBook.Price,
                     Image = getBook.Image,
-                    AuthorId = getBook.AuthorId
-                    //Author = getBook.Author
+                    AuthorId = getBook.AuthorId,
+                    Description = getBook.Description,
                 };
                 return book;
             }
@@ -85,11 +85,19 @@ namespace Logic.Services
                     Count = book.Count,
                     Price = book.Price,
                     Image = book.Image,
-                    AuthorId = book.AuthorId
-
+                    AuthorId = book.AuthorId,
+                    Description = book.Description
                 };
                 uow.BookRepository.Update(bookDb);
                 uow.SaveChanges();
+            }
+        }
+
+        public bool BookExists(int id)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                return uow.BookRepository.Count(e => e.Id == id) > 0;
             }
         }
     }

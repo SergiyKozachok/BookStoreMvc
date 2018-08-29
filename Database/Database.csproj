@@ -119,6 +119,10 @@
     <Compile Include="Migrations\201808271316356_Add tables Orders and OrderDetails.Designer.cs">
       <DependentUpon>201808271316356_Add tables Orders and OrderDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808290646592_Added column Dtscription to table Books.cs" />
+    <Compile Include="Migrations\201808290646592_Added column Dtscription to table Books.Designer.cs">
+      <DependentUpon>201808290646592_Added column Dtscription to table Books.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808271316356_Add tables Orders and OrderDetails.resx">
       <DependentUpon>201808271316356_Add tables Orders and OrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808290646592_Added column Dtscription to table Books.resx">
+      <DependentUpon>201808290646592_Added column Dtscription to table Books.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

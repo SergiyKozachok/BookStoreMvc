@@ -71,18 +71,9 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
-
-        //private bool BookExists(int id)
-        //{
-        //    return db.Books.Count(e => e.Id == id) > 0;
-        //}
+        private bool BookExists(int id)
+        {
+            return _booksService.BookExists(id);
+        }
     }
 }

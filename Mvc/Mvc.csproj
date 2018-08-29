@@ -1076,6 +1076,7 @@
     <Content Include="Areas\Admin\Content\images\placeholder.png" />
     <Content Include="Areas\Admin\Content\images\twitter_corner_black.png" />
     <Content Include="Areas\Admin\Content\images\twitter_corner_blue.png" />
+    <Content Include="Content\adm-books.css" />
     <Content Include="Content\alertifyjs\alertify.css" />
     <Content Include="Content\alertifyjs\alertify.min.css" />
     <Content Include="Content\alertifyjs\alertify.rtl.css" />
@@ -1159,6 +1160,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\507071472-612x612.jpg" />
     <Content Include="Images\636337794.jpg" />
+    <Content Include="Images\logo.jpg" />
     <Content Include="Images\lspor.jpg" />
     <Content Include="Images\noimage.jpg" />
     <Content Include="Images\pexels-photo-694740.jpeg" />
@@ -1850,6 +1852,7 @@
     <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Books\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

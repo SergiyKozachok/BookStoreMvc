@@ -26,6 +26,8 @@ namespace TransferLayer.Models
 
         public string AuthorLastName { get; set; }
 
+        public string Description { get; set; }
+
         public String Image { get; set; }
 
         public virtual Author Author { get; set; }
@@ -47,7 +49,7 @@ namespace TransferLayer.Models
             AuthorId = book.AuthorId;
             AuthorName = book.Author.firstName;
             AuthorLastName = book.Author.lastName;
-            //Image = "~/AppFiles/Images/noimage.png";
+            Description = book.Description;
         }
 
 
