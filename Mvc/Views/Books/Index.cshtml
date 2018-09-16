@@ -11,14 +11,16 @@
             <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
                 <a href="@Url.Action("Details", "Books", new { id=item.Id })"><img class="book-title-center" src="@($"data:image/jpg;base64,{item.Image}")" /></a>
                 <span class="project-details"><a href="@Url.Action("Details", "Books", new { id=item.Id })">@Html.DisplayFor(modelItem => item.Title)</a></span>
-                <span class="project-details">@Html.DisplayFor(modelItem => item.Price) грн</span>
+                <span class="project-details">
+                    @Html.DisplayFor(modelItem => item.AuthorName) @Html.DisplayFor(modelItem => item.AuthorLastName)<br/>
+                    @Html.DisplayFor(modelItem => item.Price) грн
+                </span>
                 <span class="project-details">@Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart", new { id = item.Id }, null)</span>
-             </li>
+            </li>
             <li>
             </li>
         </ul>
     }
-
 </div>
 
 

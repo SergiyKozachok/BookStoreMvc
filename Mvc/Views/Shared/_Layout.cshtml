@@ -40,9 +40,8 @@
     <div class="color-bar-2 color-bg"></div>
     <div class="container">
         <div class="row header"><!-- Begin Header -->
-            <div class="span5 logo">
-                <a href="#"><img src="~/Images/logo.jpg" alt="" /></a>
-                <h5>Big Things... Small Packages</h5>
+            <div class="span4 logo">
+                <a href="~/Home/Index"><img src="~/Images/logo.jpg" alt="" /></a>
             </div>
             <div class="span7 navigation">
                 <div class="navbar hidden-phone">
@@ -51,15 +50,6 @@
                         <li>@Html.ActionLink("Books", "Index", "Books")</li>
                         <li>@Html.ActionLink("Cart", "Index", "ShoppingCart")</li>
                         <li>@Html.ActionLink("Order", "Index", "Order")</li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Full Width</a></li>
-                                <li><a href="#">Right Sidebar</a></li>
-                                <li><a href="#">Left Sidebar</a></li>
-                                <li><a href="#">Double Sidebar</a></li>
-                            </ul>
-                        </li>
                         <li><a href="#">Contact</a></li>
                     </ul>
 
@@ -100,11 +90,14 @@
         </div>
     </div>
     @*</div>*@
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
+<div class="container body-content">
+    @*<div class="col-xs-12 col-md-2">
+        @Html.Action("CategoryMenuPartial", "Books")
+    </div>*@
+    @RenderBody()
+    <hr/>
 
-    </div>
+</div>
     <footer>
         <!-- Footer Area
         ================================================== -->

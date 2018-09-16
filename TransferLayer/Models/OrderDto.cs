@@ -29,6 +29,10 @@ namespace TransferLayer.Models
 
         public string CustomerAddress { get; set; }
 
+        public virtual OrderDetails OrderDetails { get; set; }
+
+        public int OrderDetailsId { get; set; }
+
         public OrderDto(Order order)
         {
             Id = order.Id;

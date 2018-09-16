@@ -16,6 +16,7 @@
             <th scope="col"><label><b>Назва</b></label></th>
             <th scope="col"><label><b>Обкладинка</b></label></th>
             <th scope="col"><label><b>Автор</b></label></th>
+            <th scope="col"><label><b>Жанр</b></label></th>
             <th scope="col"><label><b>Ціна</b></label></th>
             <th scope="col"><label><b>Кількість</b></label></th>
             <th scope="col"><label><b>Анотація</b></label></th>
@@ -43,6 +44,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.AuthorName)
                     @Html.DisplayFor(modelItem => item.AuthorLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)

@@ -99,38 +99,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201806230912092_Add column Image to table Books.cs" />
-    <Compile Include="Migrations\201806230912092_Add column Image to table Books.Designer.cs">
-      <DependentUpon>201806230912092_Add column Image to table Books.cs</DependentUpon>
+    <Compile Include="Migrations\201808301259103_Create database.cs" />
+    <Compile Include="Migrations\201808301259103_Create database.Designer.cs">
+      <DependentUpon>201808301259103_Create database.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808140803394_Create table Page.cs" />
-    <Compile Include="Migrations\201808140803394_Create table Page.Designer.cs">
-      <DependentUpon>201808140803394_Create table Page.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808150807041_Add table Sidebar.cs" />
-    <Compile Include="Migrations\201808150807041_Add table Sidebar.Designer.cs">
-      <DependentUpon>201808150807041_Add table Sidebar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808151208375_Add table Category.cs" />
-    <Compile Include="Migrations\201808151208375_Add table Category.Designer.cs">
-      <DependentUpon>201808151208375_Add table Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808271316356_Add tables Orders and OrderDetails.cs" />
-    <Compile Include="Migrations\201808271316356_Add tables Orders and OrderDetails.Designer.cs">
-      <DependentUpon>201808271316356_Add tables Orders and OrderDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808290646592_Added column Dtscription to table Books.cs" />
-    <Compile Include="Migrations\201808290646592_Added column Dtscription to table Books.Designer.cs">
-      <DependentUpon>201808290646592_Added column Dtscription to table Books.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppUser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
-    <Compile Include="Migrations\201806181246430_Create-Database.cs" />
-    <Compile Include="Migrations\201806181246430_Create-Database.Designer.cs">
-      <DependentUpon>201806181246430_Create-Database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Order.cs" />
@@ -138,6 +114,7 @@
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Sidebar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
@@ -147,26 +124,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806181246430_Create-Database.resx">
-      <DependentUpon>201806181246430_Create-Database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806230912092_Add column Image to table Books.resx">
-      <DependentUpon>201806230912092_Add column Image to table Books.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808140803394_Create table Page.resx">
-      <DependentUpon>201808140803394_Create table Page.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808150807041_Add table Sidebar.resx">
-      <DependentUpon>201808150807041_Add table Sidebar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808151208375_Add table Category.resx">
-      <DependentUpon>201808151208375_Add table Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808271316356_Add tables Orders and OrderDetails.resx">
-      <DependentUpon>201808271316356_Add tables Orders and OrderDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808290646592_Added column Dtscription to table Books.resx">
-      <DependentUpon>201808290646592_Added column Dtscription to table Books.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808301259103_Create database.resx">
+      <DependentUpon>201808301259103_Create database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

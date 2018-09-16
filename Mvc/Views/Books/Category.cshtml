@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TransferLayer.Models.BookDto>
+
+    @{
+        ViewBag.Title = ViewBag.CategoryName;
+    }
+
+    <h2>@ViewBag.CategoryName</h2>
+
+    <div class="row clearfix no-margin">
+        @foreach (var item in Model)
+        {
+            <ul class="gallery-post-grid holder">
+                <!-- Gallery Item 1 -->
+                <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                    <a href="@Url.Action("Details", "Books", new { id=item.Id })"><img class="book-title-center" src="@($"data:image/jpg;base64,{item.Image}")" /></a>
+                    <span class="project-details"><a href="@Url.Action("Details", "Books", new { id=item.Id })">@Html.DisplayFor(modelItem => item.Title)</a></span>
+                    <span class="project-details">@Html.DisplayFor(modelItem => item.Price) грн</span>
+                    <span class="project-details">@Html.ActionLink("Add to Cart", "OrderNow", "ShoppingCart", new { id = item.Id }, null)</span>
+                </li>
+            </ul>
+        }
+    </div>

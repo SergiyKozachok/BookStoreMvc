@@ -1154,6 +1154,7 @@
     <Content Include="Content\Piccolo\js\jquery.flexslider.js" />
     <Content Include="Content\Piccolo\js\jquery.prettyPhoto.js" />
     <Content Include="Content\Piccolo\js\jquery.quicksand.js" />
+    <Content Include="Content\shopping-cart.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1473,6 +1474,8 @@
     <Content Include="Areas\Admin\Content\assets\scss\_gauge.scss" />
     <Content Include="Areas\Admin\Content\assets\scss\_switches.scss" />
     <Content Include="Areas\Admin\Content\assets\scss\_widgets.scss" />
+    <Content Include="Areas\Admin\Views\Shop\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Shop\EditCategory.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckeditor\ckeditor.php" />
     <Content Include="Scripts\ckeditor\ckeditor_basic.js" />
@@ -1853,6 +1856,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Books\Details.cshtml" />
+    <Content Include="Views\Books\CategoryMenuPartial.cshtml" />
+    <Content Include="Views\Books\Category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

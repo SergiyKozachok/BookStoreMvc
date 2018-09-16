@@ -27,4 +27,10 @@ namespace TransferLayer.Models
             Title = category.Title;
         }
     }
+
+    public class SelectCategoryListItemViewModel
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+    }
 }

@@ -40,6 +40,16 @@ namespace Mvc.Controllers
                 Id = a.Id,
                 Text = a.FirstName + " " + a.LastName
             }).ToList();
+
+            HttpResponseMessage responseCtgr = WebApiClient.GetAsync("Categories").Result;
+            var ctgrList = responseCtgr.Content.ReadAsAsync<IEnumerable<CategoryDto>>().Result;
+            var ctgrDtos = ctgrList as CategoryDto[] ?? ctgrList.ToArray();
+            model.Categories = ctgrList.Select(c => new SelectCategoryListItemViewModel
+            {
+                Id = c.Id,
+                Title = c.Title
+            }).ToList();
+
             if (id == 0)
             {
                 return View(model);
@@ -53,6 +63,15 @@ namespace Mvc.Controllers
                 {
                     Id = a.Id,
                     Text = a.FirstName + " " + a.LastName
+                };
+                return viewModel;
+            }).ToList();
+            model.Categories = ctgrDtos.Select(a =>
+            {
+                var viewModel = new SelectCategoryListItemViewModel()
+                {
+                    Id = a.Id,
+                    Title = a.Title
                 };
                 return viewModel;
             }).ToList();
@@ -76,6 +95,13 @@ namespace Mvc.Controllers
             {
                 Id = a.Id,
                 Text = a.FirstName + " " + a.LastName
+            }).ToList();
+            HttpResponseMessage responseCtgr = WebApiClient.GetAsync("Categories").Result;
+            var ctgrList = responseCtgr.Content.ReadAsAsync<IEnumerable<CategoryDto>>().Result;
+            book.Categories = ctgrList.Select(c => new SelectCategoryListItemViewModel
+            {
+                Id = c.Id,
+                Title = c.Title
             }).ToList();
             if (book.Id == 0)
             {
@@ -127,8 +153,51 @@ namespace Mvc.Controllers
 
         public ActionResult Details(int id)
         {
-            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Books/" + id.ToString()).Result;
-            return View(response.Content.ReadAsAsync<BookDto>().Result);
+            var response = WebApiClient.GetAsync("Books/" + id).Result;
+            var model = response.Content.ReadAsAsync<BookDto>().Result;
+            HttpResponseMessage responseAuthor = WebApiClient.GetAsync("Authors").Result;
+            var authorList = responseAuthor.Content.ReadAsAsync<IEnumerable<AuthorDto>>().Result;
+            foreach (var item in authorList)
+            {
+                if (item.Id == model.AuthorId)
+                {
+                    model.AuthorName = item.FirstName;
+                    model.AuthorLastName = item.LastName;
+                }
+            }
+
+            HttpResponseMessage responseCtgr = WebApiClient.GetAsync("Categories").Result;
+            var ctgrList = responseCtgr.Content.ReadAsAsync<IEnumerable<CategoryDto>>().Result;
+            foreach (var item in ctgrList)
+            {
+                if (item.Id == model.CategoryId)
+                {
+                    model.CategoryName = item.Title;
+                }
+            }
+            
+            return View(model);
+        }
+
+        public ActionResult CategoryMenuPartial()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Categories").Result;
+            var categoriesList = response.Content.ReadAsAsync<IEnumerable<CategoryDto>>().Result;
+            return PartialView(categoriesList);
+        }
+
+        public ActionResult ViewCategory(string name)
+        {
+            HttpResponseMessage responseBooks = WebApiClient.GetAsync("Books").Result;
+            List<BookDto> booksList = responseBooks.Content.ReadAsAsync<IEnumerable<BookDto>>().Result.ToList();
+            for (int i = 0; i < booksList.Count; i++)
+            {
+                if (booksList[i].CategoryName != name)
+                {
+                    booksList.Remove(booksList[i]);
+                }
+            }
+            return View("Category");
         }
     }
 }

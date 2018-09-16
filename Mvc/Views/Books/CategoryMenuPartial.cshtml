@@ -1,0 +1,15 @@
+﻿@model IEnumerable<TransferLayer.Models.CategoryDto>
+
+@{
+    ViewBag.Title = "CategoryMenuPartial";
+}
+
+<h3>Categories</h3>
+
+<ul>
+    @foreach (var item in Model) {
+        <li><a href="~/Books/Index/@item.Title">@item.Title</a></li>
+        @*@Html.Action("ViewCategory", "Books", new { name = item.Title })*@
+    }
+</ul>
+

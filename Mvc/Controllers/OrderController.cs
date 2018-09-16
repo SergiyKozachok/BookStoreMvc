@@ -22,7 +22,18 @@ namespace Mvc.Controllers
         public ActionResult Details(int id)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("Orders/" + id.ToString()).Result;
-            return View(response.Content.ReadAsAsync<OrderDto>().Result);
+            var order = response.Content.ReadAsAsync<OrderDto>().Result;
+
+            HttpResponseMessage orderDetailsResponse = GlobalVariables.WebApiClient.GetAsync("OrderDetails").Result;
+            var orderDetailsList = orderDetailsResponse.Content.ReadAsAsync<IEnumerable<OrderDetailsDto>>().Result;
+            foreach (var item in orderDetailsList)
+            {
+                if (item.Id == order.OrderDetailsId)
+                {
+
+                }
+            }
+            return View(order);
         }
 
         // GET: Order/Create
